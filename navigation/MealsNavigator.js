@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,7 +12,7 @@ import FavoritesScreen from '../screens/FavoritesScreen.js';
 
 import colors from '../constants/colors.js';
 
-const Stack = createStackNavigator();
+const MealsStack = createStackNavigator();
 
 const stackNavigatorOptions = {
     headerStyle: {
@@ -26,15 +26,23 @@ const stackNavigatorOptions = {
 
 const MealsNavigator = () => {
     return (
-        <Stack.Navigator
-            screenOptions={stackNavigatorOptions}
-        >
-            <Stack.Screen name="Categories" component={CategoriesScreen} />
-            <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
-            <Stack.Screen name="MealDetail" component={MealDetailScreen} />
-        </Stack.Navigator>
+        <MealsStack.Navigator screenOptions={stackNavigatorOptions} >
+            <MealsStack.Screen name="Categories" component={CategoriesScreen} />
+            <MealsStack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
+            <MealsStack.Screen name="MealDetail" component={MealDetailScreen} />
+        </MealsStack.Navigator>
     )
 };
+// ----------------------------------------------------------------------------------
+const FavoritesStack = createStackNavigator();
+const FavoritesNavigator = () => {
+    return (
+        <FavoritesStack.Navigator screenOptions={stackNavigatorOptions}>
+            <FavoritesStack.Screen name="Favorites" component={FavoritesScreen}/>
+            <FavoritesStack.Screen name="MealDetail" component={MealDetailScreen}/>
+        </FavoritesStack.Navigator>
+    )
+}
 // ----------------------------------------------------------------------------------
 const Tabs = createBottomTabNavigator();
 
@@ -57,18 +65,26 @@ const MealsFavTabNavigator = () => {
         <Tabs.Navigator
             screenOptions={tabNavigatorOptions}
             tabBarOptions={{
-                activeTintColor: colors.accentColor,
-                inactiveTintColor: 'gray',
-                // activeBackgroundColor: 'red'
+                activeTintColor: 'white',
+                inactiveTintColor: 'white',
+                activeBackgroundColor: colors.accentColor,
+                inactiveBackgroundColor: colors.primaryColor
+                // tabStyle: {backgroundColor: colors.primaryColor},
             }}
-            showLabel={false}
-            showIcon={false}
+            
         >
+            {/* <Tabs.Screen name="Meals" component={MealsNavigator} options={ ({route}) => ({ title: 'elo' }) }/> */}
             <Tabs.Screen name="Meals" component={MealsNavigator}/>
-            <Tabs.Screen name="Favorites" component={FavoritesScreen}/>
+            <Tabs.Screen name="Favorites" component={FavoritesNavigator}/>
         </Tabs.Navigator>
     )
 }
+
+const styles = StyleSheet.create({
+    test: {
+        backgroundColor: 'red'
+    }
+})
 
 // export default MealsNavigator;
 export default MealsFavTabNavigator;
