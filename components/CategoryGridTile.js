@@ -9,7 +9,7 @@ const CategoryGridTile = (props) => {
     }
 
     return (
-        <View  style={styles.gridItem}>
+        <View style={styles.gridItem}>
             <TouchableComponent style={{flex: 1}} onPress={props.onSelect}>
                 <View style={{...styles.container,...{backgroundColor: props.color}}}>
                     <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     gridItem: {
         flex: 1,
         height: 150,
-        margin: 10
+        margin: 10,
     },
     container: {
         flex: 1,
@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         padding: 15,
         borderRadius: 10,
-        shadowColor: 'black',
-        shadowOpacity: 0.25,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10,
-        elevation: 5
+        shadowColor: 'red',
+        shadowOpacity: 1,
+        shadowOffset: { width: 2, height: 2 },
+        shadowRadius: 5,
+        elevation: 15
     },
     title: {
         fontFamily: 'open-sans-bold',

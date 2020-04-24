@@ -15,7 +15,7 @@ const MealsScreen = ({ navigation, route }) => {
     const meals = MEALS.filter(current => current.categoryIds.indexOf(categoryId) >= 0);
 
     const renderMealItem = (itemData) => {
-        return <MealItem meal={itemData.item} onSelect={() => {}}/>
+        return <MealItem meal={itemData.item} onSelect={() => navigation.navigate("MealDetail", {mealId: itemData.item.id})}/>
     }
 
     return (

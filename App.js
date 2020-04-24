@@ -6,7 +6,8 @@ import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { enableScreens } from 'react-native-screens';
 
-import MealsNavigator from './navigation/MealsNavigator.js';
+// import MealsNavigator from './navigation/MealsNavigator.js';
+import MealsFavTabNavigator from './navigation/MealsNavigator.js';
 
 enableScreens();
 
@@ -26,9 +27,9 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <MealsNavigator>
+      <MealsFavTabNavigator>
         
-      </MealsNavigator>
+      </MealsFavTabNavigator>
     </NavigationContainer>
   );
 }
