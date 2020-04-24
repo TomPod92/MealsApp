@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Platform, TouchableNativeFeedback, ImageBackground } from 'react-native';
 
+import DefaultText from '../components/DefaultText';
+
 const MealItem = (props) => {
 
     let TouchableComponent = TouchableOpacity;
@@ -15,15 +17,15 @@ const MealItem = (props) => {
                     <View style={{...styles.mealRow, ...styles.mealHeader}}>
                         <ImageBackground source={{uri: props.meal.imageUrl}} style={styles.bgImage}>
                             <View style={styles.titleContainer}>
-                                <Text style={styles.title}>{props.meal.title}</Text>
+                                <DefaultText style={styles.title}>{props.meal.title}</DefaultText>
                             </View>
                         </ImageBackground>
                     </View>
 
                     <View style={{...styles.mealRow, ...styles.mealDetail}}>
-                        <Text>{props.meal.duration}min</Text>
-                        <Text>{props.meal.complexity.toUpperCase()}</Text>
-                        <Text>{props.meal.affordability.toUpperCase()}</Text>
+                        <DefaultText>{props.meal.duration}min</DefaultText>
+                        <DefaultText>{props.meal.complexity.toUpperCase()}</DefaultText>
+                        <DefaultText>{props.meal.affordability.toUpperCase()}</DefaultText>
                     </View>
                     
                 </View>

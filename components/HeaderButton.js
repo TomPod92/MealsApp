@@ -12,9 +12,9 @@ const HeaderButton = (props) => {
     }
 
     return (
-        <View {...props} style={styles.headerButton}>
+        <View {...props} style={{...styles.headerButton, ...props.style}}>
             <TouchableComponent onPress={props.handleClick}>
-                <Ionicons name="ios-star" size={24} color="white"/>
+                <Ionicons name={props.iconName} size={props.size ? props.size : 24} color="white"/>
             </TouchableComponent>
         </View>
     );

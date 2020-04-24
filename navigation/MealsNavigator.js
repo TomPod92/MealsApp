@@ -3,12 +3,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
 
 import CategoriesScreen from '../screens/CategoriesScreen.js';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen.js';
 import MealDetailScreen from '../screens/MealDetailScreen.js';
 import FavoritesScreen from '../screens/FavoritesScreen.js';
+import FilterScreen from '../screens/FiltersScreen.js';
 
 import colors from '../constants/colors.js';
 
@@ -68,8 +70,7 @@ const MealsFavTabNavigator = () => {
                 activeTintColor: 'white',
                 inactiveTintColor: 'white',
                 activeBackgroundColor: colors.accentColor,
-                inactiveBackgroundColor: colors.primaryColor
-                // tabStyle: {backgroundColor: colors.primaryColor},
+                inactiveBackgroundColor: colors.primaryColor,
             }}
             
         >
@@ -79,12 +80,34 @@ const MealsFavTabNavigator = () => {
         </Tabs.Navigator>
     )
 }
+// ----------------------------------------------------------------------------------
+const FiltersStack = createStackNavigator();
 
-const styles = StyleSheet.create({
-    test: {
-        backgroundColor: 'red'
+const FiltersNavigator = () => {
+    return (
+        <FiltersStack.Navigator screenOptions={stackNavigatorOptions} >
+            <FiltersStack.Screen name="Filters" component={FilterScreen} />
+        </FiltersStack.Navigator>
+    )
+};
+// ----------------------------------------------------------------------------------
+const Drawer = createDrawerNavigator();
+
+const DrawerNavigator = () => {
+    return (
+        <Drawer.Navigator drawerStyle={styles.drawer}>
+            <Drawer.Screen name="MealsFav" component={MealsFavTabNavigator} options={ ({route}) => ({ title: 'Meals' }) }/>
+            <Drawer.Screen name="Filters" component={FiltersNavigator} />
+        </Drawer.Navigator>
+    )
+};
+
+const styles= StyleSheet.create({
+    drawer: {
+        // backgroundColor: 'red',
+        width: 240
     }
 })
 
-// export default MealsNavigator;
-export default MealsFavTabNavigator;
+// export default MealsFavTabNavigator;
+export default DrawerNavigator;

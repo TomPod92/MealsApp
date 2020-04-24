@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 
 import { CATEGORIES, MEALS } from '../data/dummy-data.js';
-import MealItem from '../components/MealItem.js';
 import MealList from '../components/MealList.js';
 
 const MealsScreen = ({ navigation, route }) => {
@@ -15,24 +13,9 @@ const MealsScreen = ({ navigation, route }) => {
     // znajdz wszystkie meals z tej kategorii
     const meals = MEALS.filter(current => current.categoryIds.indexOf(categoryId) >= 0);
 
-    // const renderMealItem = (itemData) => {
-    //     return <MealItem meal={itemData.item} onSelect={() => navigation.navigate("MealDetail", {mealId: itemData.item.id})}/>
-    // }
 
-    return (
-        // <View style={styles.screen}>
-        //     <FlatList style={{width: '100%', paddingHorizontal: 10}} data={meals} renderItem={renderMealItem}/>
-        // </View>
-        <MealList listData={meals} navigation={navigation} />
-    );
+    return ( <MealList listData={meals} navigation={navigation} /> );
 }
 
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
  
 export default MealsScreen;

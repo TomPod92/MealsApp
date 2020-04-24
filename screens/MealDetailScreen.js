@@ -11,7 +11,7 @@ const MealDetailScreen = ({ navigation, route }) => {
     const meal = MEALS.find(current => current.id === mealId);
     navigation.setOptions({ 
         title: meal.title,
-        headerRight: () => <HeaderButton handleClick={handleClick}/>
+        headerRight: () => <HeaderButton handleClick={handleClick} iconName="ios-star"/>
     });
 
     const handleClick = () => {
